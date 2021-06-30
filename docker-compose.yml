@@ -1,4 +1,4 @@
-version: "3"
+version: '3.8'
 
 services:
   q-rabbitmq:
@@ -58,6 +58,20 @@ services:
       - q-rabbitmq-network
     env_file:
       - services/shipping/.env
+    depends_on:
+      q-rabbitmq:
+        condition: service_healthy
+
+  report-service:
+    container_name: report-service
+    build:
+      context: .
+      target: report-service
+    restart: unless-stopped
+    networks:
+      - q-rabbitmq-network
+    env_file:
+      - services/report/.env
     depends_on:
       q-rabbitmq:
         condition: service_healthy

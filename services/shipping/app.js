@@ -9,10 +9,10 @@ async function processMessage(msg) {
         if(deliveryData.address && deliveryData.address.zipCode) {
             console.log(`✔ SUCCESS, SHIPPING AUTHORIZED, SEND TO:`)
             console.log(deliveryData.address)
+            await (await RabbitMQService.getInstance()).send('reports', deliveryData)
         } else {
             console.log(`X ERROR, WE CAN'T SEND WITHOUT ZIPCODE :'(`)
         }
-        await (await RabbitMQService.getInstance()).send('report', deliveryData)
 
     } catch (error) {
         console.log(`X ERROR TO PROCESS: ${error.response}`)
@@ -24,4 +24,4 @@ async function consume() {
     await (await RabbitMQService.getInstance()).consume(process.env.RABBITMQ_QUEUE_NAME, (msg) => {processMessage(msg)})
 } 
 
-consume()
+consume();

@@ -1,7 +1,8 @@
 # Serviço de report
 
-Este é um modelo para o nosso serviço de reportes das vendas que nossa loja ja fez até o momento. Nele temos uma estrutura de apoio com funçoes para atualizar nosso report e visualizar os resultados. 
-Entretanto nosso modelo ainda não esta recebendo as mensagens da fila, está função cabe a você implementar. 
+Este é um modelo para o nosso serviço de reportes das vendas que nossa loja ja fez até o momento. Nele temos uma estrutura de apoio com funçoes para atualizar nosso report e visualizar os resultados.
+
+Entretanto nosso modelo ainda não esta recebendo as mensagens da fila, está função cabe a você implementar.
 
 Obs: Este é um exemplo de como pode ser criado o serviço de report, sinta-se avontade para melhora-ló ou mudar de linguagm.  Fique atento apenas ao padrão da mensagem que esta sendo publicada na fila. O seu serviço ira receber um json conforme ilustrado abaixo:
 
